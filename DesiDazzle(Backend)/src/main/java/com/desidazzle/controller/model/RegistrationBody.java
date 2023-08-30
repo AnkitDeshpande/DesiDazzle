@@ -7,68 +7,73 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class RegistrationBody {
-    /** The username. */
-    @NotNull
-    @NotBlank
-    @Size(min=3, max=255)
-    private String username;
-    /** The email. */
-    @NotNull
-    @NotBlank
-    @Email
-    private String email;
-    /** The password. */
-    @NotNull
-    @NotBlank
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$")
-    @Size(min=6, max=32)
-    private String password;
-    /** The first name. */
-    @NotNull
-    @NotBlank
-    private String firstName;
-    /** The last name. */
-    @NotNull
-    @NotBlank
-    private String lastName;
 
-    public String getUsername() {
-        return username;
-    }
+	/** The username. */
+	@NotNull
+	@NotBlank
+	@Size(min = 3, max = 255)
+	private String username;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	/** The email. */
+	@NotNull
+	@NotBlank
+	@Email
+	private String email;
 
-    public String getEmail() {
-        return email;
-    }
+	/** The password. */
+	@NotNull
+	@NotBlank
+	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$")
+	@Size(min = 6, max = 32)
+	private String password;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	/** The first name. */
+	@NotNull
+	@NotBlank
+	private String firstName;
 
-    public String getPassword() {
-        return password;
-    }
+	/** The last name. */
+	@NotNull
+	@NotBlank
+	private String lastName;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 }
