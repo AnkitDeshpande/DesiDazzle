@@ -27,7 +27,7 @@ public class UserService implements IUserService {
 	@Autowired
 	private JWTService jwtService;
 
-	// if Exception of duplicate bean remove this.
+	/** if Exception of duplicate bean remove this. */
 	public UserService(CustomerRepo customerRepo) {
 		super();
 		this.customerRepo = customerRepo;
@@ -70,7 +70,7 @@ public class UserService implements IUserService {
 		Optional<Customer> optUser = customerRepo.findByUsernameIgnoreCase(loginBody.getUsername());
 		if (optUser.isPresent()) {
 			Customer cust = optUser.get();
-			if (encryptionService.verifypassword(loginBody.getPassword(), cust.getPassword())) {
+			if (encryptionService.verifyPassword(loginBody.getPassword(), cust.getPassword())) {
 				return jwtService.generateJWT(cust);
 			}
 		}

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import jakarta.annotation.PostConstruct;
 
 @Service
-public class EncryptionService {
+public class EncryptionService implements IEncryptionService {
 
 	@Value("${encryption.salt.rounds}")
 	private int saltRounds;
@@ -18,11 +18,13 @@ public class EncryptionService {
 		salt = BCrypt.gensalt(saltRounds);
 	}
 
+	@Override
 	public String encryptPassword(String password) {
 		return BCrypt.hashpw(password, salt);
 	}
 
-	public boolean verifypassword(String password, String hash) {
+	@Override
+	public boolean verifyPassword(String password, String hash) {
 		return BCrypt.checkpw(password, hash);
 	}
 }

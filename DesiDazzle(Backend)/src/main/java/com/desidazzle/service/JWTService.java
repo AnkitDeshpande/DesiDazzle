@@ -12,7 +12,7 @@ import com.desidazzle.model.Customer;
 import jakarta.annotation.PostConstruct;
 
 @Service
-public class JWTService {
+public class JWTService implements IJWTService {
 	@Value("${jwt.algorithm.key}")
 	private String algorithmKey;
 
@@ -31,9 +31,15 @@ public class JWTService {
 		algorithm = Algorithm.HMAC256(algorithmKey);
 	}
 
+	@Override
 	public String generateJWT(Customer user) {
 		return JWT.create().withClaim(USERNAME_KEY, user.getUsername())
 				.withExpiresAt(new Date(System.currentTimeMillis() + 1000 * expiryInSeconds)).withIssuer(issuer)
 				.sign(algorithm);
+	}
+
+	@Override
+	public String getUsername(String token) {
+		return JWT.decode(token).getClaim(USERNAME_KEY).asString();
 	}
 }
